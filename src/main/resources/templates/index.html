@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<html xmlns:th="http://www.w3.org/1999/xhtml"></html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,17 +72,19 @@
             <table class="wTable" id="wTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
                 <thead>
                 <tr>
-                    <th>系统</th>
+                    <th>序号</th>
+                    <th>顺序</th>
                     <th>参数ID</th>
                     <th>参数名称</th>
                     <th>操作名称</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="measure:${measures}">
                 <tr>
-                    <td><div>第一行第一列</div></td>
-                    <td><div>第一行第二列</div></td>
-                    <td><div>第一行第三列</div></td>
+                    <td th:text="${measure.id}">序号</td>
+                    <td th:text="${measure.order_}">顺序</td>
+                    <td th:text="${measure.number}">参数ID</td>
+                    <td th:text="${measure.name}">参数名称</td>
                     <td>
                         <button  onclick="location.href='line_chart'">查看折线图</button>
                     </td>
@@ -105,6 +107,14 @@
             all_content[index].classList.add('active');
         })
     })
+</script>
+<script type="importmap">
+	{
+		"imports": {
+			...
+			"vue": "/npm/vue/dist/vue.esm.browser.js"
+		}
+	}
 </script>
 </body>
 </html>
