@@ -7,6 +7,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Model Loader</title>
     <style>
+            .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=88);
+
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            padding: 20px;
+            border: 2px solid orange;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+        }
+
         .tab_box{
             width:100%;
             display:flex;
@@ -50,6 +78,28 @@
         <button class="tab_btn"> 数字孪生可视化 </button>
         <button class="tab_btn"> 数据可视化 </button>
     </div>
+
+    <div id="light" class="white_content">
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">关闭窗口</a>
+        </br>
+        <form action="1.html" method="post">
+            <table class="cTable" id="cTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+
+    </div>
+    <div id="fade" class="black_overlay"></div>
+</body>
+
     <div class="content_box">
         <div class="content">
             <form name="my_form" method="POST">
@@ -60,6 +110,12 @@
                     <input type="button" value="红色" onclick="alert('变为红色')">
                     <input type="button" value="绿色" onclick="alert('变为绿色')">
                     <input type="reset" value="重置颜色">
+
+
+                    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
+                        请点这里进行测试
+                    </a>
+
                 </p>
                 <div class="pic">
                     <div id="output"></div>
@@ -95,6 +151,8 @@
         </div>
 
     </div>
+
+
 </div>
 <script>
     const tabs=document.querySelectorAll('.tab_btn');
