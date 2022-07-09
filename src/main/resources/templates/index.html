@@ -6,71 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Model Loader</title>
-    <style>
-            .black_overlay{
-            display: none;
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            z-index:1001;
-            -moz-opacity: 0.8;
-            opacity:.80;
-            filter: alpha(opacity=88);
-
-        }
-        .white_content {
-            display: none;
-            position: absolute;
-            top: 25%;
-            left: 10%;
-            width: 80%;
-            height: 80%;
-            padding: 20px;
-            border: 2px solid orange;
-            background-color: white;
-            z-index:1002;
-            overflow: auto;
-        }
-
-        .tab_box{
-            width:100%;
-            display:flex;
-            justify-content:space-around;
-            align-items:center;
-            border-bottom:2px solid rgba(229,229,229);
-        }
-        .tab_box .tab_btn{
-            font-size:18px;
-            font_weight:600;
-            color: #919191;
-            background:none;
-            border: none;
-            padding:18px;
-            cursor: pointer;
-        }
-        .tab_box .tab_btn.active{
-            color: #7360ff;
-        }
-        .content_box{
-            padding:20px;
-        }
-        .content_box .content{
-            display:none;
-            animation: moving .5s ease;
-        }
-        .content_box .content.active{
-            display:block;
-        }
-        .tab_box .tab_btn.active{
-            color: #7360ff;
-        }
-        .pic{
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
 <div class="container">
@@ -84,12 +20,22 @@
         </br>
         <form action="1.html" method="post">
             <table class="cTable" id="cTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
-                <tbody>
+                <thead>
                 <tr>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
+                    <th>序号</th>
+                    <th>测点位号</th>
+                    <th>被测参数名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody th:each="measure:${measure_Component3}">
+                <tr>
+                    <td th:text="${measure.order_}">序号</td>
+                    <td th:text="${measure.number}">测点位号</td>
+                    <td th:text="${measure.name}">被测参数名称</td>
+                    <td>
+                        <button  onclick="location.href='line_chart'">查看折线图</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -98,7 +44,6 @@
 
     </div>
     <div id="fade" class="black_overlay"></div>
-</body>
 
     <div class="content_box">
         <div class="content">
@@ -151,8 +96,6 @@
         </div>
 
     </div>
-
-
 </div>
 <script>
     const tabs=document.querySelectorAll('.tab_btn');

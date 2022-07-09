@@ -16,7 +16,7 @@ import javax.persistence.*;
 public class Measure {
     @Id
     @GeneratedValue
-    Integer id;
+    Long id;
 
     @Column(name="order")
     Integer order_;
