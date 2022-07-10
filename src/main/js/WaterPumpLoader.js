@@ -8,8 +8,8 @@ var modelDirPath = "static/model/"
 console.log("three.js版本号", window.__THREE__);
 
 // 模型全局颜色设置
-var originColor = 0x333333;      // 初始颜色
-var selectedColor = 0xdddddd;    // 被选中时颜色
+window.originColor = 0x333333;      // 初始颜色
+window.selectedColor = 0xdddddd;    // 被选中时颜色
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -37,7 +37,9 @@ loader.load("WaterPumpAttach.glb", function (gltf) {
 
    console.log("模型加载成功，模型对象：");
    console.log(model);
+   window.MODEL = model;      // 使模型成为全局变量
 });
+
 
 // 设置镜头位置方向
 camera.position.set(5, 5, 5);
@@ -141,3 +143,5 @@ function renderScene() {
    controls.update();      // 更新轨道控制器
    renderer.render(scene, camera);
 }
+
+

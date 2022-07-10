@@ -52,9 +52,9 @@
                     <input type="button" value="蓝色" onclick="selectedColor = 0xdddddd">
                     <input type="button" value="黄色" onclick="alert('变为黄色')">
                     轴承：
-                    <input type="button" value="红色" onclick="alert('变为红色')">
+                    <input type="button" value="红色" onclick="window.setComponentColor()">
                     <input type="button" value="绿色" onclick="alert('变为绿色')">
-                    <input type="reset" value="重置颜色">
+                    <input type="reset" value="重置颜色" onclick="window.resetColor()">
 
 
                     <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">
@@ -65,10 +65,11 @@
             </form>
             <div class="pic">
                 <div id="output"></div>
-                <div id="statsDiv"></div>
-                <script type="module"  th:src="@{static/js/WaterPumpLoader.js}"></script>
-                <script type="module"  th:src="@{static/js/ShowComponentInfo.js}"></script>
-            </div>
+            <div id="statsDiv"></div>
+            <script th:src="@{static/js/WaterPumpLoader.js}"></script>
+            <script th:src="@{static/js/ShowComponentInfo.js}"></script>
+            <script th:src="@{static/js/ComponentColor.js}"></script>
+        </div>
         </div>
         <div class="content">
             <table class="wTable" id="wTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
