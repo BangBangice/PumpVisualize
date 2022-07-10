@@ -1,0 +1,20 @@
+{
+  "name": "water-pump-loader",
+  "version": "1.0.0",
+  "description": "A package to load and display the .glb model of water pump.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "Flinn",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "three": "^0.140.2"
+  }
+}
