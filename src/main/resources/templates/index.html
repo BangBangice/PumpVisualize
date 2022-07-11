@@ -8,6 +8,9 @@
     <title>Model Loader</title>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="/js/chart.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -19,7 +22,7 @@
     <div id="light" class="white_content">
         <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">关闭窗口</a>
         </br>
-        <form action="1.html" method="post">
+        <form action="chart" method="post">
             <table class="cTable" id="cTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
                 <thead>
                 <tr>
@@ -82,7 +85,7 @@
                     <td th:text="${measure.number}">参数ID</td>
                     <td th:text="${measure.name}">参数名称</td>
                     <td>
-                        <button  onclick="location.href='line_chart'">查看折线图</button>
+                        <button  onclick="location.href='chart'">查看折线图</button>
                     </td>
                 </tr>
                 </tbody>
@@ -91,6 +94,7 @@
 
     </div>
 </div>
+
 <script>
     const tabs=document.querySelectorAll('.tab_btn');
     const all_content=document.querySelectorAll('.content');
@@ -116,13 +120,6 @@
     let measure8=[[${measure_Component8}]]
 
 </script>
-<script type="importmap">
-	{
-		"imports": {
-			...
-			"vue": "/npm/vue/dist/vue.esm.browser.js"
-		}
-	}
-</script>
+
 </body>
 </html>

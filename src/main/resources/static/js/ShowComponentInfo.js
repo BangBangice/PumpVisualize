@@ -44,7 +44,7 @@ function myCreateFunction(measureAll) {
         cell1.innerHTML = measure.order_;
         cell2.innerHTML = measure.number;
         cell3.innerHTML = measure.name;
-        cell4.innerHTML = "<button  onclick=\"location.href='line_chart'\">查看折线图</button>"
+        cell4.innerHTML = "<button  onclick=\"location.href='chart'\">查看折线图!!!!</button>"
     }
 }
 
