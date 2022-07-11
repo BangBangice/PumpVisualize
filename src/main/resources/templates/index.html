@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Model Loader</title>
     <link rel="stylesheet" type="text/css" href="/css/index.css">
+
 </head>
 <body>
 <div class="container">
@@ -72,7 +73,7 @@
         </div>
         </div>
         <div class="content">
-            <table class="wTable" id="wTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
+            <table class="wTable" id="measureTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
                 <thead>
                 <tr>
                     <th>序号</th>
@@ -82,12 +83,23 @@
                     <th>操作名称</th>
                 </tr>
                 </thead>
-                <tbody th:each="measure:${measures}">
+<!--                <tbody th:each="measure:${measures}">-->
+<!--                <tr>-->
+<!--                    <td th:text="${measure.id}">序号</td>-->
+<!--                    <td th:text="${measure.order_}">顺序</td>-->
+<!--                    <td th:text="${measure.number}">参数ID</td>-->
+<!--                    <td th:text="${measure.name}">参数名称</td>-->
+<!--                    <td>-->
+<!--                        <button  onclick="location.href='line_chart'">查看折线图</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+                <tbody >
                 <tr>
-                    <td th:text="${measure.id}">序号</td>
-                    <td th:text="${measure.order_}">顺序</td>
-                    <td th:text="${measure.number}">参数ID</td>
-                    <td th:text="${measure.name}">参数名称</td>
+                    <td >序号</td>
+                    <td>顺序</td>
+                    <td>参数ID</td>
+                    <td>参数名称</td>
                     <td>
                         <button  onclick="location.href='line_chart'">查看折线图</button>
                     </td>
@@ -110,6 +122,18 @@
             all_content[index].classList.add('active');
         })
     })
+</script>
+<script th:inline="javascript">
+    let measures=[[${measures}]]
+    let measure1=[[${measure_Component1}]]
+    let measure2=[[${measure_Component2}]]
+    let measure3=[[${measure_Component3}]]
+    let measure4=[[${measure_Component4}]]
+    let measure5=[[${measure_Component5}]]
+    let measure6=[[${measure_Component6}]]
+    let measure7=[[${measure_Component7}]]
+    let measure8=[[${measure_Component8}]]
+
 </script>
 <script type="importmap">
 	{
