@@ -16,5 +16,10 @@ public class DataServiceImpl implements DataService{
         return dataRepository.findAll();
     }
 
+    @Override
+    public List<Data> findSampledData() {
+        return dataRepository.findSampledData();
+    }
+
 
 }

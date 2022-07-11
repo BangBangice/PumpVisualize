@@ -37,4 +37,9 @@ public class DatabaseServiceImpl implements DatabaseService{
     public List<Measure> findMeasuresByComponent_id(int component_id) {
         return measureServiceImpl.findMeasuresByComponent_id(component_id);
     }
+
+    @Override
+    public List<Data> findSampledData() {
+        return dataServiceImpl.findSampledData();
+    }
 }

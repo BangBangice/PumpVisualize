@@ -11,4 +11,6 @@ public interface DatabaseService {
     List<Component> getAllComponents();
     List<Measure> getAllMeasures();
     List<Measure> findMeasuresByComponent_id(int component_id);
+
+    List<Data> findSampledData();
 }

@@ -1,5 +1,6 @@
 package com.jnu.pumpvisualize;
 
+import com.jnu.pumpvisualize.entity.Data;
 import com.jnu.pumpvisualize.entity.Measure;
 import com.jnu.pumpvisualize.service.DatabaseServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,12 @@ class PumpVisualizeApplicationTests {
 	void DatabaseTest(){
 		List<Measure> measureList;
 		measureList=databaseService.findMeasuresByComponent_id(1);
+
+	}
+	@Test
+	void charTest(){
+		List<Data> data;
+		data=databaseService.findSampledData();
 
 	}
 

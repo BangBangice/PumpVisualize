@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface DataService {
     List<Data> findAlldatas();
+    List<Data> findSampledData();
 
 }

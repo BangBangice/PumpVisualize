@@ -1,5 +1,6 @@
 package com.jnu.pumpvisualize.controller;
 
+import com.jnu.pumpvisualize.entity.Data;
 import com.jnu.pumpvisualize.entity.Measure;
 import com.jnu.pumpvisualize.service.DatabaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,10 @@ public class MyController {
         return "line_chart";
     }
     @RequestMapping("/chart")
-    public String table(){
+    public String chart(Model model){
+        List<Data> dataList;
+        dataList=databaseService.findSampledData();
+        model.addAttribute("dataList",dataList);
         return "chart";
     }
 }
