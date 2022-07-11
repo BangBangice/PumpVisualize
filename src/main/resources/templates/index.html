@@ -49,11 +49,11 @@
         <div class="content active">
             <form name="my_form" method="POST">
                 <p>齿轮箱：
-                    <input type="button" value="蓝色" onclick="selectedColor = 0xdddddd">
-                    <input type="button" value="黄色" onclick="alert('变为黄色')">
+                    <input type="button" value="蓝色" onclick="window.setComponentColor(id='C',color=0x3333ff)">
+                    <input type="button" value="黄色" onclick="window.setComponentColor(id='C',color=0xff9900)">
                     轴承：
-                    <input type="button" value="红色" onclick="window.setComponentColor()">
-                    <input type="button" value="绿色" onclick="alert('变为绿色')">
+                    <input type="button" value="红色" onclick="window.setComponentColor(id='E',clolor=0xff0000)">
+                    <input type="button" value="绿色" onclick="window.setComponentColor(id='E',clolor=0x00ff00)">
                     <input type="reset" value="重置颜色" onclick="window.resetColor()">
 
 

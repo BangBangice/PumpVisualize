@@ -10,7 +10,6 @@
     -moz-opacity: 0.8;
     opacity:.80;
     filter: alpha(opacity=88);
-
 }
 .white_content {
     display: none;
@@ -25,7 +24,6 @@
     z-index:1002;
     overflow: auto;
 }
-
 .tab_box{
     width:100%;
     display:flex;
@@ -55,9 +53,6 @@
 .content_box .content.active{
     display:block;
 }
-/*.tab_box .tab_btn.active{*/
-/*    color: #7360ff;*/
-/*}*/
 .pic{
     margin: 0;
 }
