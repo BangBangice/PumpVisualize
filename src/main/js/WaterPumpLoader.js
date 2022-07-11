@@ -8,8 +8,11 @@ var modelDirPath = "static/model/"
 console.log("three.js版本号", window.__THREE__);
 
 // 模型全局颜色设置
-window.originColor = 0x333333;      // 初始颜色
+window.defaultColor = 0x333333;      // 初始颜色
 window.selectedColor = 0xdddddd;    // 被选中时颜色
+
+var rotatingComName = ["A_PRT0172_1090", "C_PRT0164_1028", "E_PRT0039_230", "G_PRT0149_912"]   // 需要旋转的零件名数组
+var rotatingComponents = [];        // 需要旋转的零件对象数组
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -23,23 +26,36 @@ document.getElementById("output").appendChild(renderer.domElement);  // 将渲�
 // scene.add(axes);
 
 // 加载模型
-var model;
+var model;        // 模型对象
+window.componentList = [];    // 零件数组
 const loader = new GLTFLoader();
 loader.setPath(modelDirPath);
 loader.load("WaterPumpAttach.glb", function (gltf) {
+   // 加载成功后的操作
+
    scene.add(gltf.scene);
    model = gltf;
 
-   var gltfMeshes = gltf.scene.children;
-   for (let i = 0; i < gltfMeshes.length; i++) {
-      gltfMeshes[i].material = new THREE.MeshStandardMaterial({ color: originColor });
-   }
-
    console.log("模型加载成功，模型对象：");
    console.log(model);
-   window.MODEL = model;      // 使模型成为全局变量
-});
 
+   window.MODEL = model;      // 为方便使用设置全局变量
+   componentList = window.MODEL.scene.children;
+
+   var componentList = gltf.scene.children;
+
+   // 设置初始颜色
+   for (let i = 0; i < componentList.length; i++) {
+      componentList[i].material = new THREE.MeshStandardMaterial({ color: defaultColor });
+   }
+
+   // 取得所有需要旋转的零件
+   for(let i = 0; i < componentList.length; i++) {
+      if(rotatingComName.indexOf(componentList[i].name) != -1) {
+         rotatingComponents.push(componentList[i]);
+      }
+   }
+});
 
 // 设置镜头位置方向
 camera.position.set(5, 5, 5);
@@ -71,7 +87,7 @@ scene.add(spotLight);
 var controls = new OrbitControls(camera, renderer.domElement);
 controls.update();
 
-// 点击选择零件事件
+// 点击选择零件高亮
 var raycaster = new THREE.Raycaster();
 var mouseVector = new THREE.Vector2();
 var isMoved = false;          // 用于鼠标是否为拖动操作的标记
@@ -108,7 +124,7 @@ function onMouseUp(event) {
          // 处理选中后颜色变化，排除不重要的模型
          if (componentName.search("nonsignificant") == -1) {
             // 更新颜色高亮
-            if (selectedObj != null) { selectedObj.material.color.set(originColor); }
+            if (selectedObj != null) { selectedObj.material.color.set(defaultColor); }
             selectedObj = intersects[0].object;
             intersects[0].object.material.color.set(selectedColor);
 
@@ -137,11 +153,16 @@ window.addEventListener('mousedown', onMouseDown, false);
 window.addEventListener('mousemove', onMouseMove, false);
 window.addEventListener('mouseup', onMouseUp, false);
 
+
 renderScene();
 function renderScene() {
    requestAnimationFrame(renderScene);	// 使浏览器平滑高效地绘制
+
+   // 旋转零件
+   for(let i in rotatingComponents) {
+      rotatingComponents[i].rotation.y += 0.05
+   }
+
    controls.update();      // 更新轨道控制器
    renderer.render(scene, camera);
 }
-
-
