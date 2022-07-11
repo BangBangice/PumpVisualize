@@ -51,17 +51,14 @@ public class MyController {
         model.addAttribute("measure_Component7",measure_Component7);
         model.addAttribute("measure_Component8",measure_Component8);
 
-
-
-
         return "index";
     }
     @RequestMapping("/line_chart")
     public String lineChart(){
         return "line_chart";
     }
-    @RequestMapping("/table")
+    @RequestMapping("/chart")
     public String table(){
-        return "table";
+        return "chart";
     }
 }
