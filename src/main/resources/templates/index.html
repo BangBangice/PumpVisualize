@@ -30,14 +30,6 @@
                 </tr>
                 </thead>
                 <tbody th:each="measure:${measure_Component3}">
-                <tr>
-                    <td th:text="${measure.order_}">序号</td>
-                    <td th:text="${measure.number}">测点位号</td>
-                    <td th:text="${measure.name}">被测参数名称</td>
-                    <td>
-                        <button  onclick="location.href='line_chart'">查看折线图</button>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </form>
@@ -73,7 +65,7 @@
         </div>
         </div>
         <div class="content">
-            <table class="wTable" id="measureTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
+            <table class="wTable" id="wTable" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1"  cellpadding="2" width="100%">
                 <thead>
                 <tr>
                     <th>序号</th>
@@ -83,23 +75,12 @@
                     <th>操作名称</th>
                 </tr>
                 </thead>
-<!--                <tbody th:each="measure:${measures}">-->
-<!--                <tr>-->
-<!--                    <td th:text="${measure.id}">序号</td>-->
-<!--                    <td th:text="${measure.order_}">顺序</td>-->
-<!--                    <td th:text="${measure.number}">参数ID</td>-->
-<!--                    <td th:text="${measure.name}">参数名称</td>-->
-<!--                    <td>-->
-<!--                        <button  onclick="location.href='line_chart'">查看折线图</button>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-                <tbody >
+                <tbody th:each="measure:${measures}">
                 <tr>
-                    <td >序号</td>
-                    <td>顺序</td>
-                    <td>参数ID</td>
-                    <td>参数名称</td>
+                    <td th:text="${measure.id}">序号</td>
+                    <td th:text="${measure.order_}">顺序</td>
+                    <td th:text="${measure.number}">参数ID</td>
+                    <td th:text="${measure.name}">参数名称</td>
                     <td>
                         <button  onclick="location.href='line_chart'">查看折线图</button>
                     </td>
