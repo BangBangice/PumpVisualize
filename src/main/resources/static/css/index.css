@@ -55,9 +55,9 @@
 .content_box .content.active{
     display:block;
 }
-.tab_box .tab_btn.active{
-    color: #7360ff;
-}
+/*.tab_box .tab_btn.active{*/
+/*    color: #7360ff;*/
+/*}*/
 .pic{
     margin: 0;
 }
