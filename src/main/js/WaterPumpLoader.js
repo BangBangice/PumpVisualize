@@ -11,8 +11,10 @@ console.log("three.js版本号", window.__THREE__);
 window.defaultColor = 0x333333;      // 初始颜色
 window.selectedColor = 0xdddddd;    // 被选中时颜色
 
+window.componentList = [];    // 零件数组
 var rotatingComName = ["A_PRT0172_1090", "C_PRT0164_1028", "E_PRT0039_230", "G_PRT0149_912"]   // 需要旋转的零件名数组
 var rotatingComponents = [];        // 需要旋转的零件对象数组
+
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -26,36 +28,44 @@ document.getElementById("output").appendChild(renderer.domElement);  // 将渲�
 // scene.add(axes);
 
 // 加载模型
-var model;        // 模型对象
-window.componentList = [];    // 零件数组
-const loader = new GLTFLoader();
-loader.setPath(modelDirPath);
-loader.load("WaterPumpAttach.glb", function (gltf) {
-   // 加载成功后的操作
+class Model {
+   static #aModel = null;
 
+   static async #loadModel() {
+      let loader = new GLTFLoader();
+      loader.setPath(modelDirPath);
+      await loader.loadAsync("WaterPumpAttach.glb").then(afterLoad);
+      return window.MODEL;
+   }
+
+   static async getInstance() {
+      if(this.#aModel == null) {
+         this.#aModel = await this.#loadModel();
+      }
+      return this.#aModel;
+   }
+}
+
+function afterLoad (gltf) {
    scene.add(gltf.scene);
-   model = gltf;
-
-   console.log("模型加载成功，模型对象：");
-   console.log(model);
-
-   window.MODEL = model;      // 为方便使用设置全局变量
-   componentList = window.MODEL.scene.children;
-
-   var componentList = gltf.scene.children;
-
+   window.MODEL = gltf;
+   window.componentList = gltf.scene.children;
    // 设置初始颜色
    for (let i = 0; i < componentList.length; i++) {
       componentList[i].material = new THREE.MeshStandardMaterial({ color: defaultColor });
    }
-
    // 取得所有需要旋转的零件
    for(let i = 0; i < componentList.length; i++) {
       if(rotatingComName.indexOf(componentList[i].name) != -1) {
          rotatingComponents.push(componentList[i]);
       }
    }
-});
+}
+
+var model = await Model.getInstance();
+
+console.log("模型对象：");
+console.log(model);
 
 // 设置镜头位置方向
 camera.position.set(5, 5, 5);
@@ -138,6 +148,7 @@ function onMouseUp(event) {
    }
    isMoved = false;
 }
+
 // 判断是否点击了模型元素
 function isClickOnModelElem(x, y) {
    if(x + dElem.scrollLeft < modelElem.offsetLeft || x + dElem.scrollLeft > modelElem.offsetLeft + modelElem.offsetWidth) {

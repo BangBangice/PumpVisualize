@@ -4,14 +4,11 @@
  * @param color rgb颜色
  */
 window.setComponentColor = function(id="A", color=0xff0000) {
-    // console.log(MODEL);
     id = id.toUpperCase();
     var componentList = MODEL.scene.children;
     for(let i = 0; i < componentList.length; i++) {
-        // console.log(componentList[i].name);
         if(componentList[i].name[0] == id) {
             componentList[i].material.color.set(color);
-            console.log("OK");
         }
     }
 }

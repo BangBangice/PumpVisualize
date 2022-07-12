@@ -6,5 +6,8 @@ module.exports = {
     filename: 'WaterPumpLoader.js',
     path: path.resolve(__dirname, '../resources/static/js'),
   },
-  mode: 'development'
+  mode: 'development',
+  experiments: {
+    topLevelAwait: true
+  }
 };
