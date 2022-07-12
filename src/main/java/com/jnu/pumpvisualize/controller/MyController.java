@@ -59,10 +59,12 @@ public class MyController {
         return "line_chart";
     }
     @RequestMapping("/chart")
-    public String chart(Model model){
+    public String chart(Model model,String componentName){
         List<Data> dataList;
         dataList=databaseService.findSampledData();
         model.addAttribute("dataList",dataList);
+
+        model.addAttribute("componentName",componentName);
         return "chart";
     }
 }

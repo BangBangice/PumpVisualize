@@ -4,12 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script th:inline="javascript">
+        let dataList=[[${dataList}]]
+        let componentName=[[${componentName}]]
+    </script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="/js/chart.js"></script>
 </head>
 <body>
-<script th:inline="javascript">
-    let dataList=[[${dataList}]]
+<script>
+
 </script>
 
 <div id="chart_div"></div>

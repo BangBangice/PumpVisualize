@@ -21,6 +21,12 @@ function showComponentInfo(event) {
         case 'F':
             myCreateFunction(measure6);
             break;
+        case 'G':
+            myCreateFunction(measure7);
+            break;
+        case 'H':
+            myCreateFunction(measure8);
+            break;
         default:
             console.log("???");
     }
@@ -44,7 +50,13 @@ function myCreateFunction(measureAll) {
         cell1.innerHTML = measure.order_;
         cell2.innerHTML = measure.number;
         cell3.innerHTML = measure.name;
-        cell4.innerHTML = "<button  onclick=\"location.href='chart'\">查看折线图!!!!</button>"
+        let btn="";
+        btn+="<button name='componentName' value=" ;
+        btn+="'";
+        btn+=measure.number;
+        btn+="'";
+        btn+=">查看折线图</button>";
+        cell4.innerHTML = btn;
     }
 }
 
